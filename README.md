@@ -5,10 +5,10 @@ VitePress plugin that renders Mermaid code fences as SVG diagrams with [Pele](ht
 ## Install
 
 ```bash
-npm install vitepress-pele
+npm install vitepress-pele pele
 ```
 
-`pele` is installed automatically. VitePress already provides `markdown-it`.
+`pele` is a peer dependency. VitePress already provides `markdown-it`.
 
 ## Setup
 
