@@ -1,23 +1,32 @@
 {
-  "name": "vitepress-plugin-pele",
-  "version": "0.0.0",
-  "description": "A starter for creating a TypeScript package.",
-  "homepage": "https://github.com/author/library#readme",
+  "name": "vitepress-pele",
+  "version": "0.0.1",
+  "description": "VitePress markdown plugin that renders Mermaid with Pele.",
+  "homepage": "https://github.com/suveshmoza/vitepress-pele#readme",
   "bugs": {
-    "url": "https://github.com/author/library/issues"
+    "url": "https://github.com/suveshmoza/vitepress-pele/issues"
   },
   "license": "MIT",
-  "author": "Author Name <author.name@mail.com>",
+  "author": "Suvesh Moza <hellosuvesh@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/author/library.git"
+    "url": "git+https://github.com/suveshmoza/vitepress-pele"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js"
+    },
+    "./style.css": "./dist/style.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -31,10 +40,22 @@
     "prepublishOnly": "vp run build",
     "prepare": "vp config"
   },
+  "dependencies": {
+    "pele": "^1.13.0"
+  },
   "devDependencies": {
     "@types/node": "^26.6.5",
+    "markdown-it": "^15.0.3",
     "typescript": "^7.0.2",
     "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "markdown-it": "^15.0.0"
+  },
+  "peerDependenciesMeta": {
+    "markdown-it": {
+      "optional": true
+    }
   },
   "devEngines": {
     "packageManager": {
@@ -42,5 +63,8 @@
       "version": "12.21.0",
       "onFail": "download"
     }
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

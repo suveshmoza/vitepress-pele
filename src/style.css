@@ -1,0 +1,36 @@
+.pele-figure {
+  margin: 1.5rem 0;
+}
+
+pele-diagram {
+  display: block;
+  position: relative;
+}
+
+pele-diagram > .pele-canvas > svg {
+  display: block;
+  margin-inline: auto;
+}
+
+pele-diagram,
+.pele {
+  --pele-bg: var(--vp-c-bg);
+  --pele-fg: var(--vp-c-text-1);
+  --pele-muted: var(--vp-c-text-2);
+  --pele-line: var(--vp-c-text-1);
+  --pele-surface: var(--vp-c-bg-soft);
+  --pele-surface-alt: var(--vp-c-bg-alt);
+  --pele-border: var(--vp-c-border);
+  --pele-accent: var(--vp-c-brand-1);
+  --pele-critical: var(--vp-c-danger-1);
+  --pele-error: var(--vp-c-danger-1);
+  --pele-font: var(--vp-font-family-base);
+  --pele-font-mono: var(--vp-font-family-mono);
+  --pele-radius: 6px;
+}
+
+@media print {
+  .pele-zoom {
+    display: none !important;
+  }
+}

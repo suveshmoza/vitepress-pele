@@ -1,20 +1,44 @@
-import { defineConfig } from "vite-plus";
+import { defineConfig } from 'vite-plus';
 
 export default defineConfig({
   staged: {
-    "*": "vp check --fix",
+    '*': 'vp check --fix',
   },
   pack: {
-    deps: {
-      // tsdown <0.23 compatibility: resolve external dependency subpaths.
-      // Remove to preserve subpath imports as written (the new default).
-      // https://tsdown.dev/options/dependencies#deps-resolvedepsubpath
-      resolveDepSubpath: true,
+    entry: {
+      index: 'src/index.ts',
+      client: 'src/client.ts',
     },
+    platform: 'neutral',
     dts: {
-      generator: "tsgo",
+      generator: 'tsgo',
     },
-    exports: true,
+    outExtensions: () => ({ js: '.js', dts: '.d.ts' }),
+    copy: [{ from: 'src/style.css', to: 'dist' }],
+    deps: {
+      // Host / peer: types only; VitePress already provides markdown-it.
+      neverBundle: ['markdown-it'],
+      // Keep pele/core as a bare specifier so the site's bundler resolves it.
+      resolveDepSubpath: false,
+    },
+    exports: {
+      // Avoid listing type-only peers as if they were shipped in the tarball.
+      inlinedDependencies: false,
+      customExports() {
+        return {
+          '.': {
+            types: './dist/index.d.ts',
+            import: './dist/index.js',
+          },
+          './client': {
+            types: './dist/client.d.ts',
+            import: './dist/client.js',
+          },
+          './style.css': './dist/style.css',
+          './package.json': './package.json',
+        };
+      },
+    },
   },
   lint: {
     options: {
@@ -22,5 +46,12 @@ export default defineConfig({
       typeCheck: true,
     },
   },
-  fmt: {},
+  fmt: {
+    printWidth: 80,
+    sortImports: true,
+    sortPackageJson: true,
+    singleQuote: true,
+    jsdoc: true,
+    ignorePatterns: ['dist', 'CHANGELOG.md', 'coverage', 'pnpm-lock.yaml'],
+  },
 });
