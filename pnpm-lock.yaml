@@ -183,10 +183,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
-      pele:
-        specifier: ^1.13.0
-        version: 1.13.0
     devDependencies:
       '@types/node':
         specifier: ^26.6.5
@@ -194,6 +190,9 @@ importers:
       markdown-it:
         specifier: ^15.0.3
         version: 15.0.3
+      pele:
+        specifier: ^1.13.0
+        version: 1.13.0
       typescript:
         specifier: ^7.0.2
         version: 7.0.2

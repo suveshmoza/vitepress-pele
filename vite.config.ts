@@ -16,8 +16,8 @@ export default defineConfig({
     outExtensions: () => ({ js: '.js', dts: '.d.ts' }),
     copy: [{ from: 'src/style.css', to: 'dist' }],
     deps: {
-      // Host / peer: types only; VitePress already provides markdown-it.
-      neverBundle: ['markdown-it'],
+      // Peers stay external; VitePress provides markdown-it, the host provides pele.
+      neverBundle: ['markdown-it', 'pele'],
       // Keep pele/core as a bare specifier so the site's bundler resolves it.
       resolveDepSubpath: false,
     },

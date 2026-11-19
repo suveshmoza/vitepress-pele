@@ -40,17 +40,16 @@
     "prepublishOnly": "vp run build",
     "prepare": "vp config"
   },
-  "dependencies": {
-    "pele": "^1.13.0"
-  },
   "devDependencies": {
     "@types/node": "^26.6.5",
     "markdown-it": "^15.0.3",
+    "pele": "^1.13.0",
     "typescript": "^7.0.2",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "markdown-it": "^15.0.0"
+    "markdown-it": "^15.0.0",
+    "pele": "^1.13.0"
   },
   "peerDependenciesMeta": {
     "markdown-it": {
