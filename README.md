@@ -65,7 +65,7 @@ flowchart LR
 
 ## Documentation
 
-See the full guide and live demos in [`apps/docs`](apps/docs), or run the docs site locally:
+See the guide and live examples in [`apps/docs`](apps/docs), or run the docs site locally:
 
 ```bash
 vp install

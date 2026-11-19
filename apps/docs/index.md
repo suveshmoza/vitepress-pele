@@ -4,23 +4,26 @@ layout: home
 hero:
   name: vitepress-pele
   text: Mermaid diagrams for VitePress
-  tagline: Render Mermaid fences as SVG at build time with Pele, including optional zoom in the browser.
+  tagline: Render Mermaid fences as SVG at build time with Pele. Readers see diagrams immediately.
+  image:
+    src: /logo.png
+    alt: vitepress-pele
   actions:
     - theme: brand
       text: Get Started
       link: /guide/getting-started
     - theme: alt
-      text: View Demos
-      link: /demos/
+      text: Examples
+      link: /examples/
     - theme: alt
-      text: GitHub
-      link: https://github.com/suveshmoza/vitepress-pele
+      text: Pele examples
+      link: https://pele.run/examples
 
 features:
   - title: Build-time SVG
-    details: Diagrams are rendered during the VitePress build, so readers see them without waiting for Mermaid in the browser.
+    details: Diagrams render during vitepress build. No Mermaid runtime on the page.
   - title: Pele zoom
-    details: When a diagram is scaled to fit, Pele zoom lets readers pan and inspect details.
-  - title: VitePress-native
-    details: Drop-in markdown-it plugin plus a tiny client helper and theme CSS variables.
+    details: When a diagram is scaled to fit, readers can pan and inspect details.
+  - title: Mermaid syntax
+    details: Use normal mermaid fences. Supports the same diagram types as Pele.
 ---

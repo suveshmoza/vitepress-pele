@@ -2,50 +2,45 @@
 
 ## `peleMarkdown(options?)`
 
-Configures the markdown-it plugin that turns Mermaid fences into Pele SVG at build time.
+Turns matching fences into Pele SVG during the VitePress build.
 
-| Option      | Default          | Description                                                                                |
-| ----------- | ---------------- | ------------------------------------------------------------------------------------------ |
-| `maxWidth`  | `688`            | Max diagram width in CSS pixels                                                            |
-| `languages` | `['mermaid']`    | Fence languages to render                                                                  |
-| `render`    | `{}`             | Extra Pele render options (`idPrefix`, `maxWidth`, and `responsive` are set by the plugin) |
-| `onError`   | `'throw'`        | `'throw'` raises `PeleMarkdownError`; `'render'` emits an HTML error block                 |
-| `source`    | `false`          | When `true`, sets `data-pele-source` on `<pele-diagram>`                                   |
-| `className` | `'pele-diagram'` | Class on `<pele-diagram>`                                                                  |
-
-### Example
+| Option      | Default          | Description                                                                             |
+| ----------- | ---------------- | --------------------------------------------------------------------------------------- |
+| `maxWidth`  | `688`            | Max diagram width in CSS pixels. Raise this for wide diagrams (C4, sankey, git).        |
+| `languages` | `['mermaid']`    | Fence languages to render.                                                              |
+| `render`    | `{}`             | Extra Pele render options. The plugin sets `idPrefix`, `maxWidth`, and `responsive`.    |
+| `onError`   | `'throw'`        | `'throw'` raises `PeleMarkdownError`. `'render'` emits an HTML error block.             |
+| `source`    | `false`          | When `true`, sets `data-pele-source` on `<pele-diagram>` to the URL-encoded fence body. |
+| `className` | `'pele-diagram'` | Class on `<pele-diagram>`.                                                              |
 
 ```ts
 import { peleMarkdown } from 'vitepress-pele';
 
 md.use(
   peleMarkdown({
-    maxWidth: 800,
+    maxWidth: 900,
     onError: 'render',
-    source: true,
   }),
 );
 ```
 
+Use `onError: 'render'` in docs sites when you prefer a visible error block over a failed build.
+
 ## `definePeleDiagram(options?)`
 
-Registers the `<pele-diagram>` custom element and enables Pele zoom in the browser.
+Registers the custom element and Pele zoom in the browser.
 
-| Option | Default          | Description                                                            |
-| ------ | ---------------- | ---------------------------------------------------------------------- |
-| `tag`  | `'pele-diagram'` | Custom element tag to register                                         |
-| `zoom` | Pele defaults    | Pele zoom options (zoom is enabled when the diagram was shrunk to fit) |
-
-### Example
+| Option | Default          | Description                                                             |
+| ------ | ---------------- | ----------------------------------------------------------------------- |
+| `tag`  | `'pele-diagram'` | Custom element tag to register.                                         |
+| `zoom` | Pele defaults    | Passed to Pele zoom. Zoom runs only when the diagram was shrunk to fit. |
 
 ```ts
 import { definePeleDiagram } from 'vitepress-pele/client';
 
 definePeleDiagram({
   zoom: {
-    // Pele zoom options
+    // Pele zoom options — see https://pele.run/
   },
 });
 ```
-
-`definePeleDiagram()` is a no-op during VitePress SSR when `customElements` is unavailable.

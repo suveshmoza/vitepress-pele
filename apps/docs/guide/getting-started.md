@@ -1,6 +1,6 @@
 # Getting Started
 
-VitePress plugin that renders Mermaid code fences as SVG diagrams with [Pele](https://pele.run/), including optional zoom in the browser.
+`vitepress-pele` turns Mermaid code fences into SVG at build time using [Pele](https://pele.run/).
 
 ## Install
 
@@ -12,7 +12,7 @@ npm install vitepress-pele pele
 
 ## Setup
 
-### 1. Markdown (build time)
+### 1. Markdown
 
 In `.vitepress/config.ts`:
 
@@ -29,7 +29,7 @@ export default defineConfig({
 });
 ```
 
-### 2. Client (zoom + styles)
+### 2. Client
 
 In `.vitepress/theme/index.ts`:
 
@@ -47,9 +47,11 @@ export default {
 };
 ```
 
-### 3. Write diagrams
+`definePeleDiagram()` registers `<pele-diagram>` and wires up Pele zoom. It is a no-op during VitePress SSR when `customElements` is missing.
 
-Use a Mermaid fence in any markdown page:
+Zoom is available only when a diagram was shrunk to fit `maxWidth` (default `688`). Diagrams that already fit are shown at full size with no zoom controls.
+
+### 3. Write a diagram
 
 ````md
 ```mermaid
@@ -65,15 +67,21 @@ flowchart LR
   A --> B
 ```
 
+## How it works
+
+1. At build time, `peleMarkdown` finds `mermaid` fences and replaces them with Pele SVG inside `<pele-diagram>`.
+2. Wide diagrams scale down to `maxWidth`. Narrow ones stay at their natural size.
+3. In the browser, `definePeleDiagram` turns on zoom only for diagrams that were scaled down.
+
 ## Exports
 
-| Import                     | Purpose                                             |
-| -------------------------- | --------------------------------------------------- |
-| `vitepress-pele`           | `peleMarkdown`, `PeleMarkdownError`, option types   |
-| `vitepress-pele/client`    | `definePeleDiagram`                                 |
-| `vitepress-pele/style.css` | Theme styles (maps VitePress CSS variables to Pele) |
+| Import                     | Purpose                                           |
+| -------------------------- | ------------------------------------------------- |
+| `vitepress-pele`           | `peleMarkdown`, `PeleMarkdownError`, option types |
+| `vitepress-pele/client`    | `definePeleDiagram`                               |
+| `vitepress-pele/style.css` | Maps VitePress CSS variables to Pele              |
 
-## Next steps
+## Next
 
-- See all plugin options in [Options](/guide/options).
-- Browse live examples on [Demos](/demos/).
+- [Options](/guide/options) for `maxWidth`, errors, and zoom
+- [Examples](/examples/) for live Mermaid in this docs site
