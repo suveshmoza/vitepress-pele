@@ -2,6 +2,13 @@
 
 VitePress plugin that renders Mermaid code fences as SVG diagrams with [Pele](https://pele.run/), including optional zoom in the browser.
 
+## Packages
+
+| Path                                                 | Description                          |
+| ---------------------------------------------------- | ------------------------------------ |
+| [`packages/vitepress-pele`](packages/vitepress-pele) | Publishable `vitepress-pele` library |
+| [`apps/docs`](apps/docs)                             | Documentation site (VitePress)       |
+
 ## Install
 
 ```bash
@@ -56,40 +63,24 @@ flowchart LR
 ```
 ````
 
-## Options
+## Documentation
 
-### `peleMarkdown(options?)`
+See the full guide and live demos in [`apps/docs`](apps/docs), or run the docs site locally:
 
-| Option      | Default          | Description                                                                                |
-| ----------- | ---------------- | ------------------------------------------------------------------------------------------ |
-| `maxWidth`  | `688`            | Max diagram width in CSS pixels                                                            |
-| `languages` | `['mermaid']`    | Fence languages to render                                                                  |
-| `render`    | `{}`             | Extra Pele render options (`idPrefix`, `maxWidth`, and `responsive` are set by the plugin) |
-| `onError`   | `'throw'`        | `'throw'` raises `PeleMarkdownError`; `'render'` emits an HTML error block                 |
-| `source`    | `false`          | When `true`, sets `data-pele-source` on `<pele-diagram>`                                   |
-| `className` | `'pele-diagram'` | Class on `<pele-diagram>`                                                                  |
+```bash
+vp install
+vp run docs#dev
+```
 
-### `definePeleDiagram(options?)`
-
-| Option | Default          | Description                                                            |
-| ------ | ---------------- | ---------------------------------------------------------------------- |
-| `tag`  | `'pele-diagram'` | Custom element tag to register                                         |
-| `zoom` | Pele defaults    | Pele zoom options (zoom is enabled when the diagram was shrunk to fit) |
-
-## Exports
-
-| Import                     | Purpose                                             |
-| -------------------------- | --------------------------------------------------- |
-| `vitepress-pele`           | `peleMarkdown`, `PeleMarkdownError`, option types   |
-| `vitepress-pele/client`    | `definePeleDiagram`                                 |
-| `vitepress-pele/style.css` | Theme styles (maps VitePress CSS variables to Pele) |
+`docs#dev` / `docs#build` pack `vitepress-pele` first so `dist/` exists for the workspace dependency.
 
 ## Development
 
 ```bash
 vp install
 vp test
-vp pack
+vp -C packages/vitepress-pele pack
+vp run docs#dev
 ```
 
 ## License

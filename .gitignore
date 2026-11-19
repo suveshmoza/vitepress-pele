@@ -3,6 +3,8 @@ dist
 *.log
 .DS_Store
 .release/
+apps/docs/.vitepress/cache
+apps/docs/.vitepress/dist
 !.vscode/
 !.vscode/settings.json
 !.vscode/extensions.json

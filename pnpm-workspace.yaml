@@ -1,5 +1,18 @@
+packages:
+  - apps/*
+  - packages/*
+
+catalogMode: prefer
+
 catalog:
+  '@types/node': ^26.6.5
+  typescript: ^7.0.2
   vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
   vite-plus: 1.7.0
+  vitepress: 2.0.0-alpha.21
+
 overrides:
   vite@*: 'catalog:'
+
+allowBuilds:
+  esbuild: true

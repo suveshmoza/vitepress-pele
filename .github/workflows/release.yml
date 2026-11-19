@@ -40,6 +40,7 @@ jobs:
       - name: Verify tag matches package.json
         env:
           TAG: ${{ github.ref_name }}
+        working-directory: packages/vitepress-pele
         run: |
           version="$(node -p "require('./package.json').version")"
           if [ "$TAG" != "v$version" ]; then
@@ -54,10 +55,11 @@ jobs:
         run: pnpm test
 
       - name: Build
-        run: pnpm run build
+        run: pnpm --filter vitepress-pele run build
 
       - name: Pack
-        run: pnpm pack --pack-destination .release
+        working-directory: packages/vitepress-pele
+        run: pnpm pack --pack-destination ../../.release
 
       - name: Publish to npm
         env:

@@ -1,60 +1,23 @@
 {
-  "name": "vitepress-pele",
-  "version": "0.0.3",
-  "description": "VitePress markdown plugin that renders Mermaid with Pele.",
-  "homepage": "https://github.com/suveshmoza/vitepress-pele#readme",
-  "bugs": {
-    "url": "https://github.com/suveshmoza/vitepress-pele/issues"
-  },
-  "license": "MIT",
-  "author": "Suvesh Moza <hellosuvesh@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/suveshmoza/vitepress-pele.git"
-  },
-  "files": [
-    "dist"
-  ],
+  "name": "vitepress-pele-monorepo",
+  "version": "0.0.0",
+  "private": true,
   "type": "module",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./client": {
-      "types": "./dist/client.d.ts",
-      "import": "./dist/client.js"
-    },
-    "./style.css": "./dist/style.css",
-    "./package.json": "./package.json"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
-    "build": "vp pack",
-    "dev": "vp pack --watch",
-    "test": "vp test",
+    "build": "vp run -r build",
     "check": "vp check",
-    "prepublishOnly": "vp run build",
-    "prepare": "vp config"
+    "dev": "vp run docs#dev",
+    "docs:build": "vp run docs#build",
+    "docs:dev": "vp run docs#dev",
+    "docs:preview": "vp run docs#preview",
+    "pack": "vp -C packages/vitepress-pele pack",
+    "prepare": "vp config",
+    "test": "vp run -r test"
   },
   "devDependencies": {
-    "@types/node": "^26.6.5",
-    "markdown-it": "^15.0.3",
-    "pele": "^1.13.0",
-    "typescript": "^7.0.2",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
     "vite-plus": "catalog:"
-  },
-  "peerDependencies": {
-    "markdown-it": "^15.0.0",
-    "pele": "^1.13.0"
-  },
-  "peerDependenciesMeta": {
-    "markdown-it": {
-      "optional": true
-    }
   },
   "devEngines": {
     "packageManager": {

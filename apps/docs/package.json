@@ -1,0 +1,19 @@
+{
+  "name": "docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vp run vitepress-pele#build && vitepress build",
+    "dev": "vp run vitepress-pele#build && vitepress dev",
+    "preview": "vp run vitepress-pele#build && vitepress preview"
+  },
+  "dependencies": {
+    "pele": "^1.13.0",
+    "vitepress-pele": "workspace:*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "vitepress": "catalog:"
+  }
+}
