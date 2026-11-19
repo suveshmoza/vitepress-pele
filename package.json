@@ -1,6 +1,6 @@
 {
   "name": "vitepress-pele",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "VitePress markdown plugin that renders Mermaid with Pele.",
   "homepage": "https://github.com/suveshmoza/vitepress-pele#readme",
   "bugs": {

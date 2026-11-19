@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.3
+
+### Fixed
+
+- `definePeleDiagram()` no-ops during VitePress SSR when `customElements` is missing.
+
 ## 0.0.2
 
 ### Changed
