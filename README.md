@@ -1,6 +1,6 @@
 # vitepress-pele
 
-VitePress plugin that renders Mermaid code fences as SVG diagrams with [Pele](https://github.com/sxzz/pele), including optional zoom in the browser.
+VitePress plugin that renders Mermaid code fences as SVG diagrams with [Pele](https://pele.run/), including optional zoom in the browser.
 
 ## Install
 
