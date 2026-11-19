@@ -17,8 +17,9 @@ export interface DefinePeleDiagramOptions {
 /**
  * Register the `<pele-diagram>` custom element so diagrams get Pele zoom.
  *
- * Call once from VitePress `enhanceApp`. Safe to call again; a second
- * registration for the same tag is ignored.
+ * Call once from VitePress `enhanceApp`. No-ops during SSR (Node has no
+ * `customElements`). Safe to call again; a second registration for the same tag
+ * is ignored.
  *
  * @example
  *   ```ts
@@ -36,6 +37,8 @@ export interface DefinePeleDiagramOptions {
 export function definePeleDiagram(
   options: DefinePeleDiagramOptions = {},
 ): void {
+  if (typeof customElements === 'undefined') return;
+
   const tag = options.tag ?? 'pele-diagram';
   if (customElements.get(tag)) return;
 
